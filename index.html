@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRL TEAM FOR DEVELOPMENT | Taimdev9</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-2: #1c1c1c;
+      --border: #2a2a2a;
+      --text: #e0e0e0;
+      --text-dim: #888888;
+      --accent: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--accent);
+    }
+    header .sub {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      margin-top: 8px;
+    }
+    header .badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 6px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      background: var(--surface);
+    }
+
+    /* Sections */
+    section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: var(--text-dim);
+      border-radius: 2px;
+    }
+
+    /* Projects Grid */
+    #projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      transition: border-color 0.2s, background 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .project-card:hover {
+      border-color: var(--text-dim);
+      background: var(--surface-2);
+    }
+    .project-card .name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--accent);
+      word-break: break-word;
+    }
+    .project-card .desc {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      flex: 1;
+    }
+    .project-card .meta {
+      display: flex;
+      gap: 14px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .project-card .lang {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .project-card .lang::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--text-dim);
+    }
+    .loading, .error-msg {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    /* Legal / Bilingual */
+    .legal-block { margin-bottom: 32px; }
+    .legal-block:last-child { margin-bottom: 0; }
+    .legal-block h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+    .legal-block p, .legal-block li {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+    .legal-block ul {
+      padding-inline-start: 20px;
+      margin-top: 6px;
+    }
+    .divider {
+      border: none;
+      border-top: 1px dashed var(--border);
+      margin: 24px 0;
+    }
+    .en-text { direction: ltr; text-align: left; }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+    footer a { color: var(--text-dim); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--accent); }
+    .footer-brand { margin-top: 6px; font-weight: 600; color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>TRL TEAM FOR DEVELOPMENT</h1>
+      <div class="sub">Taimdev9 — Developer & Team Leader</div>
+      <div class="badge">GitHub: <a href="https://github.com/Taimdev9" target="_blank" rel="noopener" style="color:var(--text-dim); text-decoration:none;">github.com/Taimdev9</a></div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>المشاريع | Projects</h2>
+      <div id="projects-grid">
+        <div class="loading">جاري تحميل المشاريع... | Loading projects...</div>
+      </div>
+    </section>
+
+    <!-- Disclaimer & Terms (Bilingual) -->
+    <section id="legal">
+      <h2>القوانين وإخلاء المسؤولية | Terms & Disclaimer</h2>
+
+      <!-- Arabic -->
+      <div class="legal-block">
+        <h3>إخلاء المسؤولية (بالعربية)</h3>
+        <p>هذا الموقع عبارة عن معرض شخصي للمشاريع البرمجية المفتوحة المصدر الخاصة بـ <strong>Taimdev9</strong> وفريق <strong>TRL TEAM FOR DEVELOPMENT</strong>. يتم توفير جميع الأكواد والمشاريع “كما هي” دون أي ضمانات من أي نوع، صريحة أو ضمنية.</p>
+        <p>أنا غير مسؤول عن أي استخدام غير قانوني أو ضار أو غير مصرح به لأي من الأكواد أو المشاريع المعروضة هنا. أي شخص يستخدم هذه المشاريع يتحمل المسؤولية الكاملة عن أفعاله وعواقبها.</p>
+        <ul>
+          <li>لا يُسمح بإساءة استخدام الموقع أو محاولة اختراقه أو تعطيله.</li>
+          <li>جميع المشاريع مفتوحة المصدر تخضع لشروط الترخيص المذكورة في مستودع كل مشروع على حدة.</li>
+          <li>الروابط الخارجية (مثل GitHub) لا نتحكم في محتواها ولا نتحمل مسؤوليتها.</li>
+          <li>المحتوى مقدم لأغراض معلوماتية وتعليمية فقط.</li>
+        </ul>
+        <p>باستخدامك هذا الموقع، فإنك توافق على هذه الشروط. إذا كنت لا توافق، يرجى عدم استخدام الموقع.</p>
+      </div>
+
+      <hr class="divider">
+
+      <!-- English -->
+      <div class="legal-block en-text">
+        <h3>Disclaimer & Terms (English)</h3>
+        <p>This website is a personal showcase of open-source software projects by <strong>Taimdev9</strong> and <strong>TRL TEAM FOR DEVELOPMENT</strong>. All code and projects are provided “as is”, without warranty of any kind, express or implied.</p>
+        <p>I am <strong>not responsible</strong> for any illegal, harmful, or unauthorized use of any code or project displayed here. Any person who uses these projects assumes full responsibility for their actions and consequences.</p>
+        <ul>
+          <li>Abuse of this site, attempts to hack it, or disrupt it are strictly prohibited.</li>
+          <li>All open-source projects are governed by the license terms stated in their respective repositories on GitHub.</li>
+          <li>External links (e.g., GitHub) are not under our control, and we assume no responsibility for their content.</li>
+          <li>Content is provided for informational and educational purposes only.</li>
+        </ul>
+        <p>By using this site, you agree to these terms. If you do not agree, please do not use the site.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>&copy; 2026 <strong>TRL TEAM FOR DEVELOPMENT</strong>. All rights reserved.</div>
+      <div class="footer-brand">Developer & Team Leader: Taimdev9</div>
+      <div style="margin-top:8px;">
+        <a href="https://github.com/Taimdev9" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const USERNAME = 'Taimdev9';
+    const grid = document.getElementById('projects-grid');
+
+    async function loadProjects() {
+      try {
+        const res = await fetch(
+          `https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=100`
+        );
+
+        if (!res.ok) {
+          throw new Error(`GitHub API responded with ${res.status}`);
+        }
+
+        const repos = await res.json();
+
+        // Filter out forks and the .github.io repo itself (optional)
+        const filtered = repos.filter(r => !r.fork && !r.name.endsWith('.github.io'));
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '<div class="loading">لا توجد مشاريع عامة حالياً. | No public projects found.</div>';
+          return;
+        }
+
+        // Sort by stars (desc), then by updated date
+        filtered.sort((a, b) => {
+          if (b.stargazers_count !== a.stargazers_count) {
+            return b.stargazers_count - a.stargazers_count;
+          }
+          return new Date(b.updated_at) - new Date(a.updated_at);
+        });
+
+        grid.innerHTML = filtered.map(repo => `
+          <a class="project-card" href="${repo.html_url}" target="_blank" rel="noopener">
+            <span class="name">${repo.name}</span>
+            <span class="desc">${repo.description || 'لا يوجد وصف | No description'}</span>
+            <div class="meta">
+              <span class="lang">${repo.language || 'N/A'}</span>
+              <span>⭐ ${repo.stargazers_count}</span>
+              <span>🍴 ${repo.forks_count}</span>
+            </div>
+          </a>
+        `).join('');
+
+      } catch (err) {
+        console.error(err);
+        grid.innerHTML = `
+          <div class="error-msg">
+            تعذر تحميل المشاريع. | Failed to load projects.<br>
+            <small style="font-size:0.8rem; opacity:0.7;">${err.message}</small><br><br>
+            <a href="https://github.com/${USERNAME}?tab=repositories" target="_blank" rel="noopener" style="color:var(--text-dim);">
+              عرض المشاريع مباشرة على GitHub | View projects on GitHub →
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    loadProjects();
+  </script>
+
+</body>
+</html>
